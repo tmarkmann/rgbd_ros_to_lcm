@@ -2,7 +2,7 @@
 <launch>
   <include file="$(find realsense2_camera)/launch/rs_rgbd.launch"/>
 
-  <node name = "rqt_lcm_dashboard" pkg = "rqt_gui" type = "rqt_gui" respawn = "false" output = "screen" args = "--perspective-fila $(find rqt_lcm_logger)/rqt_config/my_dashboard.perspective"/>
+  <node name = "rqt_lcm_dashboard" pkg = "rqt_gui" type = "rqt_gui" respawn = "false" output = "screen" args = "--perspective-file $(find rqt_lcm_logger)/rqt_config/lcm_logger.perspective"/>
 
   <node name="lcm_republisher" pkg="rgbd_ros_to_lcm" type="lcm_republisher" output="screen" respawn="false" >
     <rosparam subst_value="true">
