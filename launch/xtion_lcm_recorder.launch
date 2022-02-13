@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <launch>
+  <include file="$(find openni2_launch)/launch/openni2.launch"/>
+
+  <node name = "rqt_lcm_dashboard" pkg = "rqt_gui" type = "rqt_gui" respawn = "false" output = "screen" args = "--perspective-file $(find rqt_lcm_logger)/rqt_config/lcm_logger.perspective"/>
+
   <node name="lcm_republisher" pkg="rgbd_ros_to_lcm" type="lcm_republisher" output="screen" respawn="false" >
     <rosparam subst_value="true">
       # input parameters
