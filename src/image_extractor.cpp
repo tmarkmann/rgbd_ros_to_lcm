@@ -125,7 +125,7 @@ public:
     std::string depth_name = output_folder_ + "/" + std::to_string(timestamp) + "_depth.png";
     cv::Mat depth_mat(height, width, CV_16UC1, &depth_read_buf_[0]); 
     cv::imwrite(depth_name, depth_mat);
-
+    std::cout << "Image done"<< std::endl;
   }
 
 };
