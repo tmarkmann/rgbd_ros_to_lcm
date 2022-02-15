@@ -114,7 +114,7 @@ public:
         jpegijg_decompress_8u_rgb(color_image.data.data(), color_image.size, (unsigned char *)&image_read_buf_[0], w, h, w*3);
     }
 
-
+    std::cout << "Save image"<< std::endl;
     cv::Mat image_mat(height, width, CV_8UC3, &image_read_buf_[0]); 
     //$ flip RGB -> BGR channel order for saving with OpenCV
     cv::cvtColor(image_mat, image_mat, CV_RGB2BGR); 
