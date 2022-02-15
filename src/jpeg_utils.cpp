@@ -94,6 +94,7 @@ jpegijg_decompress_8u (const uint8_t * src, int src_size,
     }
     jpeg_finish_decompress (&cinfo);
     jpeg_destroy_decompress (&cinfo);
+    printf("Decompress successful");
     return 0;
 }
 

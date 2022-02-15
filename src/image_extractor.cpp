@@ -110,6 +110,7 @@ public:
         //$ decompress jpeg compressed rgb image
         size_t w = color_image.width;
         size_t h = color_image.height;
+        std::cout << "Decompress width: " << w << std::endl;
         jpegijg_decompress_8u_rgb(color_image.data.data(), color_image.size, (unsigned char *)&image_read_buf_[0], w, h, w*3);
     }
 
