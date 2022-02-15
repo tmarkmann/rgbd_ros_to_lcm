@@ -80,7 +80,6 @@ public:
   void decompressAndSaveImages(bot_core::images_t message)
   {
     int64_t timestamp {message.utime};
-    ROS_INFO("Timestamp: %li", timestamp);
     std::cout << "Timestamp: " << timestamp << std::endl;
 
     bot_core::image_t color_image = message.images[0];
