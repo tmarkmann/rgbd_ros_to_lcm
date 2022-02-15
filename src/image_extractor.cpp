@@ -32,8 +32,8 @@ public:
   ImageExtractor() : depth_read_buf_(0),
                      image_read_buf_(0)
   {
-    std::string output_folder_ ="/root/labelfusion/data/raw/logs2/trimmed_log.lcmlog";
-    std::string lcm_logfile_path_="/root/labelfusion/data/raw/logs2/extracted";
+    std::string lcm_logfile_path_ = "/root/labelfusion/data/raw/logs2/trimmed_log.lcmlog";
+    std::string output_folder_ = "/root/labelfusion/data/raw/logs2/extracted";
 
     boost::filesystem::create_directories(output_folder_);
 
