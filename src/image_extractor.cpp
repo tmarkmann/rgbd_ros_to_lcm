@@ -122,7 +122,7 @@ public:
     cv::imshow("image", image_mat);
     cv::waitKey(30);    
 
-    cv::Mat test(cv::Size(1, 49), CV_64FC1, Scalar(0));
+    cv::Mat test(cv::Size(1, 49), CV_64FC1, cv::Scalar(0));
     std::string test_name = output_folder_ + "/" + std::to_string(timestamp) + "_test.png";
     cv::imwrite(test_name, test);
 
