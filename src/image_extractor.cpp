@@ -119,6 +119,9 @@ public:
     //$ flip RGB -> BGR channel order for saving with OpenCV
     cv::cvtColor(image_mat, image_mat, CV_RGB2BGR); 
 
+    cv::imshow("image", image_mat);
+    waitKey(30);    
+
     cv::Mat test(cv::Size(1, 49), CV_64FC1, Scalar(0));
     std::string test_name = output_folder_ + "/" + std::to_string(timestamp) + "_test.png";
     cv::imwrite(test_name, test);
