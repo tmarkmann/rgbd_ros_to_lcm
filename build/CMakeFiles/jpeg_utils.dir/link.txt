@@ -1,2 +1,0 @@
-/usr/bin/ar qc libjpeg_utils.a  CMakeFiles/jpeg_utils.dir/src/jpeg_utils.cpp.o
-/usr/bin/ranlib libjpeg_utils.a
