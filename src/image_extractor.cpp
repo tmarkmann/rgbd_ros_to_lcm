@@ -1,7 +1,7 @@
-#include <ros/ros.h>
+//#include <ros/ros.h>
 #include <boost/filesystem.hpp>
 
-#include <cv_bridge/cv_bridge.h>
+//#include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
 
 #include <rgbd_ros_to_lcm/jpeg_utils.h>
@@ -32,31 +32,12 @@ public:
   ImageExtractor() : depth_read_buf_(0),
                      image_read_buf_(0)
   {
-    ros::NodeHandle private_nh("~");
-
-    if (!private_nh.getParam("lcm_channel", lcm_channel_)) 
-    {
-      ROS_FATAL("No LCM channel specified!");
-      ros::shutdown();
-    }
-
-    if (!private_nh.getParam("lcm_logfile", lcm_logfile_path_)) 
-    {
-      ROS_FATAL("No logfile specified!");
-      ros::shutdown();
-    }
-
-    if (!private_nh.getParam("output_folder", output_folder_)) 
-    {
-      ROS_FATAL("No output folder given, cannot save images!");
-      ros::shutdown();
-    }
+    std::string output_folder_ ="/root/labelfusion/data/raw/logs2/trimmed_log.lcmlog";
+    std::string lcm_logfile_path_="/root/labelfusion/data/raw/logs2/extracted";
 
     boost::filesystem::create_directories(output_folder_);
-    ROS_WARN("Output folder: %s", output_folder_.c_str());
 
     lcm::LogFile* logfile = new lcm::LogFile(lcm_logfile_path_, "r");
-    ROS_INFO("Reading logfile from %s", lcm_logfile_path_.c_str());
 
     const lcm::LogEvent* event = nullptr;
     int i = 0;
@@ -74,14 +55,10 @@ public:
             if (i == 0) {
                 initializeDimensions(message);
             }
-            ROS_INFO("Saving frame %d", i);
             decompressAndSaveImages(message);
             i++;
         }
     }
-
-    ROS_INFO("Saved %d events from %s channel", i, lcm_channel_.c_str()); 
-
   }
 
   ~ImageExtractor()
@@ -101,7 +78,6 @@ public:
   void decompressAndSaveImages(bot_core::images_t message)
   {
     int64_t timestamp {message.utime};
-    ROS_INFO("Timestamp: %li", timestamp);
 
     bot_core::image_t color_image = message.images[0];
     bot_core::image_t depth_image = message.images[1];
@@ -152,6 +128,5 @@ public:
 
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "image_extractor");
   ImageExtractor extractor;
 }
