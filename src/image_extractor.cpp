@@ -34,6 +34,7 @@ public:
   {
     std::string lcm_logfile_path_ = "/root/labelfusion/data/raw/logs2/trimmed_log.lcmlog";
     std::string output_folder_ = "/root/labelfusion/data/raw/logs2/extracted";
+    std::string lcm_channel_ = "OPENNI_FRAME";
 
     boost::filesystem::create_directories(output_folder_);
 
